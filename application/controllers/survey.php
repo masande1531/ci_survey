@@ -31,8 +31,16 @@ class Survey extends CI_Controller{
 	}
         
         //survey form 
-        public function survey(){
+        public function add_survey(){
             
+             if ($this->form_validation->run() === FALSE) {
+                $this->load->view('survey');
+            } else {
+
+                $this->survey_model->insert_survey();
+               $this->load->view('survey');
+            }
+        
         }
         
         //get survey data
