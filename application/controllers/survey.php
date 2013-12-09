@@ -35,15 +35,12 @@ class Survey extends CI_Controller{
         public function add_survey(){
             
              if ($this->input->post('Submit')) {
-                     echo 'Inserted';
-
+                    
                 $this->survey_model->insert_survey();
                $this->load->view('survey');
                  
-            } else {
-            
-                echo 'Not inserted';
-                 
+            } else {          
+         
                  
                 $this->index();
             }
