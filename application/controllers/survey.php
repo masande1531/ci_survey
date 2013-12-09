@@ -19,6 +19,7 @@ class Survey extends CI_Controller{
           parent::__construct(); 
 
         $this->load->helper('form');
+        $this->load->helper('html');
         $this->load->library('form_validation');
         $this->load->model('survey_model');       
      
@@ -33,12 +34,18 @@ class Survey extends CI_Controller{
         //survey form 
         public function add_survey(){
             
-             if ($this->form_validation->run() === FALSE) {
-                $this->load->view('survey');
-            } else {
+             if ($this->input->post('Submit')) {
+                     echo 'Inserted';
 
                 $this->survey_model->insert_survey();
                $this->load->view('survey');
+                 
+            } else {
+            
+                echo 'Not inserted';
+                 
+                 
+                $this->index();
             }
         
         }
@@ -47,6 +54,15 @@ class Survey extends CI_Controller{
         public function view_survey(){
             
             $data['json'] = $this->survey_model->getsurvey();
+            if(!$data['json']) show_404 ();
+            
+            $this->load->view('results', $data);
+            
+        }
+        //get survey data
+        public function form(){
+            
+            $data['json'] = $this->survey_model->getsuvery();
             if(!$data['json']) show_404 ();
             
             $this->load->view('results', $data);

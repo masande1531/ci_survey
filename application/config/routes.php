@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "survey";
 $route['survey'] = "results";
+$route['survey'] = "survey/form";
 
 $route['404_override'] = '';
 
