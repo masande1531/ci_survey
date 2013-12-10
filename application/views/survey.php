@@ -1,5 +1,6 @@
   <?php echo form_open('survey/add_survey');
                 ?>
+<?php echo validation_errors(); ?>
                
                     <strong>Name : </strong><input id="name" type="text" name="name"/>
                     <strong>Company : </strong><input id="company" type="text" name="company"/>
