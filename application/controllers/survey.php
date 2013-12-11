@@ -46,14 +46,22 @@ class Survey extends CI_Controller {
         $this->form_validation->set_rules('recommend', 'Recommend', 'required');
         $this->form_validation->set_rules('feedback', 'Feedback', 'required');
         
+        /*Validate the form
+         * If the are errors redirect to survey page and print errors
+         * Else insert into the database
+         */
         if ($this->form_validation->run() == FALSE) {
+            echo 'Error not inserted';
             $this->index();
         } else {
+            echo 'You have inserted your survey';
             $this->survey_model->insert_survey();
             $this->load->view('survey');
         }
     }
-
+     
+    /*Function
+     */
     //get survey data
     public function view_survey() {
 
